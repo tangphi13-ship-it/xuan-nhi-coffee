@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng dẫn đưa web lên GitHub Pages</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.9; }
+        .step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .step:hover { transform: translateY(-3px); }
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .step h2 {
+            display: inline;
+            margin-left: 10px;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .step p, .step li {
+            color: #555;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+        .step ul { padding-left: 20px; }
+        .step li { margin: 8px 0; }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 10px 5px 0 0;
+            transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn-green { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .btn-orange { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .btn-blue { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .code {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #333;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .success-box h3 { color: #155724; margin-bottom: 10px; }
+        .success-box .big-link {
+            font-size: 1.3em;
+            color: #155724;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            opacity: 0.8;
+        }
+        @media (max-width: 600px) {
+            .step { padding: 20px; }
+            .header h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☕ Đưa Web Xuân Nhi COFFEE Lên Internet</h1>
+            <p>Hướng dẫn từng bước - Miễn phí - Hoạt động 24/7</p>
+        </div>
+
+        <!-- Bước 1 -->
+        <div class="step">
+            <span class="step-number">1</span>
+            <h2>Tạo tài khoản GitHub</h2>
+            <p>Nếu bạn chưa có tài khoản GitHub, hãy đăng ký miễn phí:</p>
+            <a class="btn" href="https://github.com/signup" target="_blank">🔑 Đăng ký GitHub</a>
+            <p><strong>Hướng dẫn:</strong></p>
+            <ul>
+                <li>Nhập email, mật khẩu, tên người dùng (ví dụ: <strong>xuan-nhi</strong>)</li>
+                <li>Xác nhận email qua hộp thư đến</li>
+                <li>Quan trọng: Nhớ tên tài khoản (username) của bạn!</li>
+            </ul>
+            <div class="note">💡 Nếu đã có tài khoản, bỏ qua bước này và chuyển sang Bước 2</div>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="step">
+            <span class="step-number">2</span>
+            <h2>Tạo Repository (Kho chứa)</h2>
+            <p>Bấm nút bên dưới để tạo kho chứa cho website:</p>
+            <a class="btn btn-green" href="https://github.com/new" target="_blank">📦 Tạo Repository Mới</a>
+            <p><strong>Nhập thông tin như sau:</strong></p>
+            <ul>
+                <li><strong>Repository name:</strong> <code>xuan-nhi-coffee</code></li>
+                <li><strong>Description (tùy chọn):</strong> Web quán cà phê Xuân Nhi</li>
+                <li><strong>Public:</strong> ✅ Chọn <strong>Public</strong> (quan trọng!)</li>
+                <li>✅ Tích chọn <strong>Add a README file</strong></li>
+                <li>Bấm nút <strong>Create repository</strong> màu xanh</li>
+            </ul>
+            <div class="code">Tên repository: xuan-nhi-coffee</div>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="step">
+            <span class="step-number">3</span>
+            <h2>Upload file lên GitHub</h2>
+            <p>Sau khi tạo repository xong, bạn sẽ thấy trang repository. Làm theo các bước sau:</p>
+            
+            <p><strong>Cách 1: Upload trực tiếp trên web (Dễ nhất)</strong></p>
+            <ul>
+                <li>Bấm nút <strong>Add file</strong> ➡ <strong>Upload files</strong></li>
+                <li>Kéo thả các file sau từ folder <code>Web</code> vào:
+                    <ul>
+                        <li><code>index.html</code></li>
+                        <li><code>style.css</code></li>
+                        <li><code>script.js</code></li>
+                        <li>Folder <code>anh/</code> (kéo cả folder)</li>
+                    </ul>
+                </li>
+                <li>Kéo xuống dưới, bấm <strong>Commit changes</strong></li>
+            </ul>
+
+            <p><strong>Cách 2: Upload từng file</strong></p>
+            <ul>
+                <li>Bấm <strong>Add file</strong> ➡ <strong>Create new file</strong></li>
+                <li>Đặt tên file là <code>index.html</code></li>
+                <li>Copy nội dung từ file index.html trên máy vào</li>
+                <li>Bấm <strong>Commit new file</strong></li>
+                <li>Làm tương tự với <code>style.css</code> và <code>script.js</code></li>
+            </ul>
+
+            <a class="btn btn-orange" href="https://github.com/" target="_blank">📂 Mở GitHub của bạn</a>
+        </div>
+
+        <!-- Bước 4 -->
+        <div class="step">
+            <span class="step-number">4</span>
+            <h2>Bật GitHub Pages</h2>
+            <p>Sau khi upload file xong, làm theo các bước sau:</p>
+            <ul>
+                <li>Vào repository <strong>xuan-nhi-coffee</strong> của bạn</li>
+                <li>Bấm vào tab <strong>Settings</strong> (ở trên cùng)</li>
+                <li>Ở menu bên trái, bấm <strong>Pages</strong></li>
+                <li>Ở mục <strong>Branch</strong>, chọn <strong>main</strong> (hoặc master)</li>
+                <li>Bên cạnh chọn <strong>/ (root)</strong></li>
+                <li>Bấm <strong>Save</strong></li>
+                <li>Đợi 1-2 phút, trang sẽ được public!</li>
+            </ul>
+            <a class="btn btn-blue" href="https://github.com/" target="_blank">⚙️ Mở Settings GitHub</a>
+            <div class="note">⏳ Sau khi bật, đợi khoảng 2 phút là website hoạt động!</div>
+        </div>
+
+        <!-- Bước 5 - Kết quả -->
+        <div class="step">
+            <span class="step-number">5</span>
+            <h2>Kết quả - Link website của bạn</h2>
+            <div class="success-box">
+                <h3>✅ Website của bạn sẽ có link:</h3>
+                <div class="big-link" id="finalLink">https://[ten-tai-khoan].github.io/xuan-nhi-coffee</div>
+                <p style="margin-top: 15px; color: #155724;">
+                    Ví dụ: Nếu tài khoản là <strong>xuan-nhi</strong> thì link là:<br>
+                    <strong>https://xuan-nhi.github.io/xuan-nhi-coffee</strong>
+                </p>
+            </div>
+            <p><strong>Cách tìm link sau khi bật:</strong></p>
+            <ul>
+                <li>Vào Settings ➡ Pages</li>
+                <li>Ở trên cùng sẽ hiện dòng chữ xanh:
+                    <br><code>"Your site is published at https://xxx.github.io/xuan-nhi-coffee/"</code>
+                </li>
+                <li>Click vào link đó để mở website!</li>
+            </ul>
+            <div style="text-align: center; margin-top: 20px;">
+                <a class="btn btn-green" id="testLinkBtn" href="#" target="_blank">🌐 Mở Website Của Bạn</a>
+            </div>
+        </div>
+
+        <!-- Lưu ý -->
+        <div class="step">
+            <span class="step-number">📌</span>
+            <h2>Lưu ý quan trọng</h2>
+            <ul>
+                <li>✅ <strong>Miễn phí 100%</strong> - GitHub Pages không mất phí</li>
+                <li>✅ <strong>Hoạt động 24/7</strong> - Không cần bật máy tính</li>
+                <li>✅ <strong>Truy cập từ điện thoại</strong> - Mở bằng Chrome, Safari,...</li>
+                <li>✅ <strong>Chia sẻ bạn bè</strong> - Gửi link cho bất kỳ ai</li>
+                <li>📱 Mở link trên điện thoại: Copy link, dán vào Chrome/Safari</li>
+                <li>🔄 Khi sửa file, upload lại file mới lên GitHub là website tự động cập nhật</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Made with ❤️ for Xuân Nhi COFFEE</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-update link when user enters their GitHub username
+        const finalLink = document.getElementById('finalLink');
+        const testBtn = document.getElementById('testLinkBtn');
+        
+        // Try to get username from localStorage
+        let username = localStorage.getItem('github_username') || '[ten-tai-khoan]';
+        
+        function updateLink(name) {
+            const link = 'https://' + name + '.github.io/xuan-nhi-coffee';
+            finalLink.textContent = link;
+            testBtn.href = link;
+        }
+        
+        updateLink(username);
+        
+        // Prompt user to enter their GitHub username
+        setTimeout(() => {
+            const input = prompt(
+                'Nhập tên tài khoản GitHub của bạn để xem link chính xác:\n(Ví dụ: xuan-nhi)',
+                username === '[ten-tai-khoan]' ? '' : username
+            );
+            if (input && input.trim()) {
+                username = input.trim();
+                localStorage.setItem('github_username', username);
+                updateLink(username);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
